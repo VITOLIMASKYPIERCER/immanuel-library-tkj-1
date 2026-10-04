@@ -1,0 +1,7 @@
+Jawaban Refleksi Bagian 1 - Immanuel Library
+
+1. Keuntungan Memisahkan Header dan Footer Menjadi Component
+Dengan memisahkan header dan footer jadi komponen tersendiri, kita tidak perlu repot-repot menuliskan kode yang sama berulang kali di setiap halaman (sesuai prinsip DRY). Kalau nanti ada perubahan di menu navigasi atau bagian footer, kita cukup edit satu file saja (header.php atau footer.php) dan kodenya otomatis terupdate di semua halaman. Selain itu, file index.php jadi jauh lebih rapi dan gampang dibaca.
+
+2. Masalah Duplikasi pada Halaman Admin
+Pada halaman admin (Buku, Kategori, Penulis, Pengguna, dan Profil), bagian sidebar (<aside>) dan topbar (<header>) masih ditulis ulang secara manual di tiap file. Hal ini bikin kode jadi menumpuk dan tidak efisien. Kalau misal ada perubahan menu di sidebar, kita harus mengubahnya satu per satu di 14 file halaman admin yang berbeda.
