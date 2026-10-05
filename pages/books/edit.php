@@ -1,8 +1,12 @@
 <?php
 require_once __DIR__ . '/../../repositories/book-repository.php';
+require_once __DIR__ . '/../../repositories/category-repository.php';
+require_once __DIR__ . '/../../repositories/author-repository.php';
 
 $id = $_GET['id'] ?? null;
 $book = getBook($id);
+$categories = getCategories();
+$authors = getAuthors();
 
 $pageTitle = "Edit Buku";
 $pageSubtitle = "Perbarui informasi data buku";
@@ -33,10 +37,37 @@ $pageSubtitle = "Perbarui informasi data buku";
                     <?php if ($book): ?>
                         <form action="../../actions/books/update.php" method="POST">
                             <input type="hidden" name="id" value="<?= $book['id'] ?>">
-                            
+
                             <div class="form-group" style="margin-bottom: 1rem;">
                                 <label>Judul Buku</label>
                                 <input type="text" name="title" class="form-control" value="<?= htmlspecialchars($book['title']) ?>" required>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label>Kategori</label>
+                                <select name="category_id" class="form-control" required>
+                                    <?php foreach ($categories as $cat): ?>
+                                        <option value="<?= $cat['id'] ?>" <?= $cat['name'] === $book['category'] ? 'selected' : '' ?>>
+                                            <?= htmlspecialchars($cat['name']) ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label>Penulis</label>
+                                <select name="author_id" class="form-control" required>
+                                    <?php foreach ($authors as $author): ?>
+                                        <option value="<?= $author['id'] ?>" <?= $author['name'] === $book['author'] ? 'selected' : '' ?>>
+                                            <?= htmlspecialchars($author['name']) ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label>Stok</label>
+                                <input type="number" name="stock" class="form-control" value="<?= htmlspecialchars($book['stock']) ?>" required>
                             </div>
 
                             <button type="submit" class="btn btn-primary">Perbarui Buku</button>
