@@ -1,8 +1,27 @@
 <?php
 
-$users = [
-  ["id" => 1, "name" => "Admin Utama",    "email" => "admin@ski.sch.id",               "role" => "admin"],
-  ["id" => 2, "name" => "Budi Santoso",   "email" => "budi.santoso@siswa.ski.sch.id",  "role" => "member"],
-  ["id" => 3, "name" => "Siti Aminah",    "email" => "siti.aminah@siswa.ski.sch.id",   "role" => "member"],
-  ["id" => 4, "name" => "Richard Marcell","email" => "richard.m@ski.sch.id",           "role" => "admin"],
-];
+function getUsers() {
+    return [
+        ['id' => 1, 'name' => 'Budi Santoso', 'email' => 'budi@gmail.com', 'role' => 'Member'],
+        ['id' => 2, 'name' => 'Siti Aminah', 'email' => 'siti@gmail.com', 'role' => 'Admin']
+    ];
+}
+
+function getUser($id) {
+    $users = getUsers();
+    foreach ($users as $user) {
+        if ($user['id'] == $id) {
+            return $user;
+        }
+    }
+    return null;
+}
+
+function getProfile() {
+    return [
+        'id' => 1,
+        'name' => 'Budi Santoso',
+        'email' => 'budi@gmail.com',
+        'role' => 'Member'
+    ];
+}
